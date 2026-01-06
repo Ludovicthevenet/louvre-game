@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Énigme X - Le Défi de l'Œil</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="manifest" href="manifest.json">
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    </head>
+    <body data-page="enigme" data-enigmaid="enigmeX">
+        <div class="container">
+            <h2>Énigme 10 : Aile Denon, Niveau 1, Salle 712 - Peintures Françaises du 17ème siècle</h2>
+            <p class="enigme-text">Je suis un tableau représentant un portrait équestre, un roi sur son cheval, grandeur nature. L'animal est majestueux, et son cavalier porte une armure étincelante. Un élément de couleur vive ressort sur le cheval.<br><br><strong>Couleur à trouver :</strong> Quelle est la couleur de la grande plume qui orne la tête du cheval, juste au-dessus de son front ?<br><strong>Mot de passe :</strong> Sur la robe du cheval, à hauteur de son poitrail, combien de "fers à cheval" (ou motifs similaires) stylisés sont visibles dans la décoration de son harnachement ? (Comptez uniquement les motifs principaux sur cette zone)</p>
+
+            <p><strong>Votre réponse :</strong></p>
+            <input type="text" id="couleurInput" placeholder="Couleur trouvée" autocomplete="off">
+            <input type="text" id="passwordInput" placeholder="Mot de passe trouvé" autocomplete="off">
+            <button id="validateButton">Valider</button>
+            <div id="feedback"></div>
+
+            <button id="nextEnigmeButton" disabled>Énigme Suivante</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>

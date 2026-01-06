@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Défi de l'Œil - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            /* On remplace le fond général par l'image de splash uniquement pour cette page */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('splash.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .splash-container {
+            text-align: center;
+            color: white;
+        }
+        .btn-entrer {
+            background-color: #2649B2;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .btn-entrer:hover {
+            transform: scale(1.1);
+            background-color: #4A74F3;
+        }
+    </style>
+</head>
+<body data-page="splash">
+    <div class="splash-container">
+        <!-- Vous pouvez ajouter un logo ici si vous en avez un -->
+        <button class="btn-entrer" onclick="window.location.href='introduction.html'">
+            ENTRER DANS LE MYSTÈRE
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

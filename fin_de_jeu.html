@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fin du Jeu - Le Défi de l'Œil</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="manifest" href="manifest.json">
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    </head>
+    <body data-page="fin">
+        <div class="container">
+            <h1>Félicitations, Explorateur des Teintes !</h1>
+            <p>Vous avez terminé le Défi de l'Œil au Louvre. Voici le récapitulatif de vos découvertes :</p>
+
+            <h2>Votre score final : <span id="finalScore"></span></h2>
+
+            <h3>Détails des énigmes :</h3>
+            <div id="recapContainer">
+                <!-- Le récapitulatif des énigmes sera inséré ici par JavaScript -->
+            </div>
+
+            <p>Nous espérons que cette aventure colorée vous a plu !</p>
+            <button onclick="window.location.href = '/index.html'">Recommencer</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>
