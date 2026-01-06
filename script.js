@@ -72,9 +72,9 @@
         const nextEnigmeNum = currentEnigmeNum + 1;
 
         if (nextEnigmeNum <= 10) {
-            window.location.href = `/enigme${nextEnigmeNum}.html`;
+            window.location.href = `enigme${nextEnigmeNum}.html`;
         } else {
-            window.location.href = `/fin_de_jeu.html`;
+            window.location.href = `fin_de_jeu.html`;
         }
     }
 
@@ -213,4 +213,5 @@
             }
         }
     });
+
 
