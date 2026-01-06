@@ -1,11 +1,11 @@
-const CACHE_NAME = 'louvre-game-v2';
+const CACHE_NAME = 'louvre-game-v3';
 const urlsToCache = [
   'index.html',
   'introduction.html',
   'styles.css',
   'script.js',
   'manifest.json',
-  'background.jpg',
+  'background.png',
   'splash.jpg',
   'fin_de_jeu.html',
   'enigme1.html',
