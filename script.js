@@ -208,8 +208,9 @@
                 startButton.addEventListener('click', () => {
                     // Supprimer l'ancien état du jeu si on recommence
                     localStorage.clear();
-                    window.location.href = '/enigme1.html';
+                    window.location.href = 'enigme1.html';
                 });
             }
         }
     });
+
