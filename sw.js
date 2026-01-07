@@ -1,4 +1,4 @@
-const CACHE_NAME = 'louvre-game-v3';
+const CACHE_NAME = 'louvre-game-v4';
 const urlsToCache = [
   'index.html',
   'introduction.html',
