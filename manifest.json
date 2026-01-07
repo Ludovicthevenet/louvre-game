@@ -1,22 +1,24 @@
 {
-      "name": "Le Défi de l'Œil : Les Teintes Secrètes du Louvre",
-      "short_name": "Louvre Défi",
-      "description": "Lancez-vous dans une chasse aux trésors colorée au cœur du Louvre !",
-      "start_url": "/index.html",
-      "display": "standalone",
-      "background_color": "#D4D9F0",
-      "theme_color": "#2649B2",
-      "icons": [
-        {
-          "src": "./icons/icon-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        },
-        {
-          "src": "./icons/icon-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
-        }
-      ]
-
+  "name": "Le Défi de l'Œil : Les Teintes Secrètes du Louvre",
+  "short_name": "Louvre Défi",
+  "description": "Chasse aux trésors colorée au Louvre",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#2649B2",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
+  ]
+}
