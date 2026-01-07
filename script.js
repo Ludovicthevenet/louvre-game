@@ -8,7 +8,7 @@ const solutions = {
     "enigme4": { couleur: "ORANGE", password: "PATTE DE LION" },
     "enigme5": { couleur: "VERT", password: "TASSE" },
     "enigme6": { couleur: "ROUGE", password: "2" },
-    "enigme7": { couleur: "VERT-DE-GRIS", password: "DISQUE" },
+    "enigme7": { couleur: "VERT", password: "DISQUE" },
     "enigme8": { couleur: "ROUGE", password: "CHIMERE" },
     "enigme9": { couleur: "OR", password: "DRAGON" },
     "enigme10": { couleur: "ROUGE", password: "4" }
@@ -104,3 +104,4 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('Erreur de Majordome', err));
     });
 }
+
