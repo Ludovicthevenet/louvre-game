@@ -1,25 +1,26 @@
-const CACHE_NAME = 'louvre-game-v4';
+const CACHE_NAME = 'louvre-v5'; // On augmente le numéro pour forcer la mise à jour
 const urlsToCache = [
-  'index.html',
-  'introduction.html',
-  'styles.css',
-  'script.js',
-  'manifest.json',
-  'background.png',
-  'splash.jpg',
-  'fin_de_jeu.html',
-  'enigme1.html',
-  'enigme2.html',
-  'enigme3.html',
-  'enigme4.html',
-  'enigme5.html',
-  'enigme6.html',
-  'enigme7.html',
-  'enigme8.html',
-  'enigme9.html',
-  'enigme10.html',
-  'icons/icon-192x192.png',
-  'icons/icon-512x512.png'
+  './',
+  './index.html',
+  './introduction.html',
+  './styles.css',
+  './script.js',
+  './manifest.json',
+  './background.jpg',
+  './splash.jpg',
+  './fin_de_jeu.html',
+  './enigme1.html',
+  './enigme2.html',
+  './enigme3.html',
+  './enigme4.html',
+  './enigme5.html',
+  './enigme6.html',
+  './enigme7.html',
+  './enigme8.html',
+  './enigme9.html',
+  './enigme10.html',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png'
 ];
 
 // Installation : on met tout en mémoire
