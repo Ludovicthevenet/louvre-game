@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-            .then(reg => console.log('Service Worker OK'))
-            .catch(err => console.log('Erreur Service Worker', err));
+        navigator.serviceWorker.register('./sw.js') // Ajout du ./ ici
+            .then(reg => console.log('Majordome enregistré !'))
+            .catch(err => console.log('Erreur de Majordome', err));
     });
 }
