@@ -1,4 +1,4 @@
-const CACHE_NAME = 'louvre-v10'; // On augmente le numéro pour forcer la mise à jour
+const CACHE_NAME = 'louvre-v11'; // On augmente le numéro pour forcer la mise à jour
 const urlsToCache = [
   './',
   './index.html',
