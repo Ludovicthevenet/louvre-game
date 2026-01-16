@@ -3,48 +3,54 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     margin: 0;
-    padding: 20px 10px; /* Espace en haut et en bas pour le scroll */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.png'); 
+    padding: 0;
+    /* Correction Image : On ajoute une couleur de secours et on vérifie le chemin */
+    background: #2c2c2c linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.png') no-repeat center center fixed; 
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     color: #333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* On change le centrage : le contenu commence en haut et on gère l'espace */
-    justify-content: flex-start; 
-    align-items: center;
-    text-align: center;
-    overflow-y: auto; /* RÉACTIVE LE SCROLL */
+    width: 100%;
 }
 
 /* --- LE CONTENEUR (S'adapte à la hauteur du texte) --- */
 .container {
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    width: 95%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 500px;
     box-sizing: border-box;
-    margin-top: auto;    /* POUSSE LE BLOC VERS LE BAS SI VIDE AU-DESSUS */
-    margin-bottom: 40px; /* Évite qu'il soit collé au bord du bas */
+    
+    /* CETTE PARTIE GÈRE LA POSITION BASSE */
+    margin-top: auto;    /* Pousse vers le bas */
+    margin-bottom: 50px; /* Distance avec le bord du bas */
+    margin-left: auto;   /* Centre horizontalement */
+    margin-right: auto;  /* Centre horizontalement */
+    
+    /* S'assure que le contenu ne dépasse pas */
+    overflow: hidden; 
+}
+
+/* --- ESPACE EN HAUT (Pour ne pas que le texte touche le bord si on scrolle) --- */
+body::before {
+    content: "";
+    margin-top: 60px; /* Espace de sécurité en haut de page */
 }
 
 /* --- ADAPTATION DES TEXTES --- */
 h1 { 
     color: #2649B2; 
-    font-size: 1.8em;
-    margin-bottom: 15px;
+    font-size: 1.6em;
+    margin-bottom: 10px;
 }
 
 .enigme-text {
-    font-size: 1.05em;
+    font-size: 1em;
     text-align: left;
-    margin-bottom: 20px;
-    word-wrap: break-word; /* Évite que le texte dépasse */
+    margin-bottom: 15px;
 }
 
 /* --- FORMULAIRES ET BOUTONS --- */
@@ -71,16 +77,10 @@ button {
     font-weight: bold;
 }
 
-/* --- AJUSTEMENT SPÉCIFIQUE POUR L'ACCUEIL --- */
-/* Si vous avez un titre très court sur l'accueil, le 'margin-top: auto' 
-   le poussera naturellement vers le bas sans bloquer le scroll ailleurs. */
-
+/* --- MEDIA QUERIES --- */
 @media (min-width: 600px) {
     .container {
-        padding: 40px;
-        width: 80%;
-        margin-top: auto; 
-        margin-bottom: 80px;
+        padding: 35px;
+        margin-bottom: 100px;
     }
 }
-
