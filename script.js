@@ -1,107 +1,97 @@
 // ==========================================
-// 1. SOLUTIONS DU JEU
+// 1. SOLUTIONS DU JEU (MISES À JOUR)
 // ==========================================
 const solutions = {
-    "enigme1": { couleur: "NOIR", password: "2" },
+    "enigme1": { couleur: "NOIR", password: "STYLET" },
     "enigme2": { couleur: "BLEU", password: "5" },
-    "enigme3": { couleur: "ROSE", password: "3" },
-    "enigme4": { couleur: "ORANGE", password: "PATTE DE LION" },
-    "enigme5": { couleur: "VERT", password: "TASSE" },
-    "enigme6": { couleur: "ROUGE", password: "2" },
-    "enigme7": { couleur: "VERT", password: "DISQUE" },
-    "enigme8": { couleur: "ROUGE", password: "CHIMERE" },
-    "enigme9": { couleur: "OR", password: "DRAGON" },
-    "enigme10": { couleur: "ROUGE", password: "4" }
+    "enigme3": { couleur: "ROSE", password: "GAUCHE" },
+    "enigme4": { couleur: "BLANC", password: "PLUME" },
+    "enigme5": { couleur: "ORANGE", password: "4" },
+    "enigme6": { couleur: "VERT", password: "DISQUE" },
+    "enigme7": { couleur: "ROUGE", password: "POUTRE" },
+    "enigme8": { couleur: "OR", password: "5" },
+    "enigme9": { couleur: "ROUGE", password: "PERLE" },
+    "enigme10": { couleur: "VERT", password: "MOUSTACHE" }
 };
 
 // ==========================================
-// 2. LOGIQUE PRINCIPALE AU CHARGEMENT
+// 2. LOGIQUE PRINCIPALE
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // On récupère le type de page grâce à l'attribut data-page du body
     const pageType = document.body.dataset.page;
 
-    // --- LOGIQUE POUR LES PAGES D'ÉNIGMES ---
+    // --- PAGES D'ÉNIGMES ---
     if (pageType === 'enigme') {
         const enigmeId = document.body.dataset.enigmaid;
         const btnValider = document.getElementById('validateButton');
         const btnSuivant = document.getElementById('nextEnigmeButton');
         const feedback = document.getElementById('feedback');
 
-        // Au clic sur VALIDER
+        // Restaurer si déjà résolu
+        if (localStorage.getItem(enigmeId + "_solved") === "true") {
+            feedback.textContent = "Énigme déjà résolue !";
+            feedback.className = "correct";
+            btnSuivant.disabled = false;
+        }
+
         btnValider.addEventListener('click', () => {
             const couleurSaisie = document.getElementById('couleurInput').value.trim().toUpperCase();
             const passSaisi = document.getElementById('passwordInput').value.trim().toUpperCase();
 
             if (couleurSaisie === solutions[enigmeId].couleur && passSaisi === solutions[enigmeId].password) {
-                // Succès
-                feedback.textContent = "Correct ! Le secret est révélé.";
-                feedback.style.color = "green";
-                btnSuivant.disabled = false; // On débloque le bouton suivant
-                localStorage.setItem(enigmeId + "_solved", "true"); // On enregistre la réussite
+                feedback.textContent = "Correct ! Vous avez déchiffré le secret.";
+                feedback.className = "correct";
+                btnSuivant.disabled = false;
+                localStorage.setItem(enigmeId + "_solved", "true");
             } else {
-                // Échec
                 feedback.textContent = "Réponse incorrecte, observez mieux l'œuvre...";
-                feedback.style.color = "red";
+                feedback.className = "incorrect";
                 btnSuivant.disabled = true;
             }
         });
 
-        // Au clic sur ÉNIGME SUIVANTE
         btnSuivant.addEventListener('click', () => {
             const currentNum = parseInt(enigmeId.replace('enigme', ''));
             if (currentNum < 10) {
-                // On va à l'énigme suivante (ex: enigme2.html)
-                window.location.href = 'enigme' + (currentNum + 1) + '.html';
+                window.location.href = `enigme${currentNum + 1}.html`;
             } else {
-                // Si c'est la 10, on va à la fin
                 window.location.href = 'fin_de_jeu.html';
             }
         });
     }
 
-    // --- LOGIQUE POUR LA PAGE D'INTRODUCTION ---
+    // --- PAGE D'INTRODUCTION ---
     if (pageType === 'intro') {
-        const startButton = document.getElementById('startButton');
-        if (startButton) {
-            startButton.addEventListener('click', () => {
-                // On vide la mémoire pour recommencer à zéro
-                localStorage.clear();
-                window.location.href = 'enigme1.html';
-            });
-        }
+        document.getElementById('startButton').addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'enigme1.html';
+        });
     }
 
-    // --- LOGIQUE POUR LA PAGE DE FIN (COMPTAGE DES POINTS) ---
+    // --- PAGE DE FIN (SCORE) ---
     if (pageType === 'fin') {
         let score = 0;
         const recap = document.getElementById('recapContainer');
+        const labels = [
+            "Gudea l'Architecte", "Ebih-Il l'Intendant", "Le Sphinx de Tanis", 
+            "Le Duc de Guise", "Sarcophage des Époux", "L'Athlète en bronze", 
+            "Le Radeau de la Méduse", "Anne de Clèves", "L'épouse de Hermanus Amija", 
+            "Autoportrait de Delacroix"
+        ];
         
-        // On vérifie chaque énigme dans la mémoire du téléphone
         for (let i = 1; i <= 10; i++) {
             if (localStorage.getItem('enigme' + i + '_solved') === "true") {
                 score++;
-                recap.innerHTML += `<p style="color: green;">Énigme ${i} : Découverte ✅</p>`;
+                recap.innerHTML += `<div class="recap-item">Énigme ${i} (${labels[i-1]}) : ✅</div>`;
             } else {
-                recap.innerHTML += `<p style="color: red;">Énigme ${i} : Manquée ❌</p>`;
+                recap.innerHTML += `<div class="recap-item">Énigme ${i} : ❌</div>`;
             }
         }
-        // Affichage du score final
-        const scoreElement = document.getElementById('finalScore');
-        if (scoreElement) {
-            scoreElement.textContent = score + " / 10";
-        }
+        document.getElementById('finalScore').textContent = score + " / 10";
     }
 });
 
-// ==========================================
-// 3. ENREGISTREMENT DU MODE HORS-LIGNE (PWA)
-// ==========================================
+// Service Worker
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js') // Ajout du ./ ici
-            .then(reg => console.log('Majordome enregistré !'))
-            .catch(err => console.log('Erreur de Majordome', err));
-    });
+    navigator.serviceWorker.register('sw.js');
 }
-
