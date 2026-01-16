@@ -31,17 +31,16 @@ body {
     width: 90%;
     max-width: 500px;
     box-sizing: border-box;
-
-    /* CENTRE HORIZONTALEMENT */
     margin-left: auto;
     margin-right: auto;
 
-    /* POSITIONNEMENT VERTICAL */
-    /* On utilise une marge haute flexible pour pousser vers le bas sur l'accueil, 
-       tout en permettant le scroll sur les pages longues */
-    margin-top: 20vh; /* Ajustez ce chiffre (ex: 40vh) pour descendre plus ou moins sur l'accueil */
+    /* --- AJUSTEZ CE CHIFFRE POUR DESCENDRE LE BOUTON --- */
+    margin-top: 55vh; /* Essayez 55vh ou 60vh pour dégager le centre de l'image */
     margin-bottom: 50px;
 }
+
+ 
+
 
 /* --- AJUSTEMENTS TEXTES --- */
 h1 { color: #2649B2; font-size: 1.6em; margin-bottom: 10px; }
@@ -82,3 +81,4 @@ button {
         margin-bottom: 100px;
     }
 }
+
