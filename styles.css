@@ -1,20 +1,28 @@
 /* --- CONFIGURATION GÉNÉRALE --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    /* Correction Image : On ajoute une couleur de secours et on vérifie le chemin */
-    background: #2c2c2c linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.png') no-repeat center center fixed; 
-    background-size: cover;
+    /* FORÇAGE DE L'IMAGE DE FOND */
+    background-color: #2c2c2c; /* Couleur de secours */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.png') !important; 
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100%;
+    display: block; /* On repasse en mode bloc standard pour faciliter le scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* --- LE CONTENEUR (S'adapte à la hauteur du texte) --- */
+/* --- LE CONTENEUR (POSITIONNEMENT) --- */
 .container {
     background-color: rgba(255, 255, 255, 0.95);
     padding: 25px;
@@ -23,35 +31,21 @@ body {
     width: 90%;
     max-width: 500px;
     box-sizing: border-box;
-    
-    /* CETTE PARTIE GÈRE LA POSITION BASSE */
-    margin-top: auto;    /* Pousse vers le bas */
-    margin-bottom: 50px; /* Distance avec le bord du bas */
-    margin-left: auto;   /* Centre horizontalement */
-    margin-right: auto;  /* Centre horizontalement */
-    
-    /* S'assure que le contenu ne dépasse pas */
-    overflow: hidden; 
+
+    /* CENTRE HORIZONTALEMENT */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* POSITIONNEMENT VERTICAL */
+    /* On utilise une marge haute flexible pour pousser vers le bas sur l'accueil, 
+       tout en permettant le scroll sur les pages longues */
+    margin-top: 20vh; /* Ajustez ce chiffre (ex: 40vh) pour descendre plus ou moins sur l'accueil */
+    margin-bottom: 50px;
 }
 
-/* --- ESPACE EN HAUT (Pour ne pas que le texte touche le bord si on scrolle) --- */
-body::before {
-    content: "";
-    margin-top: 60px; /* Espace de sécurité en haut de page */
-}
-
-/* --- ADAPTATION DES TEXTES --- */
-h1 { 
-    color: #2649B2; 
-    font-size: 1.6em;
-    margin-bottom: 10px;
-}
-
-.enigme-text {
-    font-size: 1em;
-    text-align: left;
-    margin-bottom: 15px;
-}
+/* --- AJUSTEMENTS TEXTES --- */
+h1 { color: #2649B2; font-size: 1.6em; margin-bottom: 10px; }
+.enigme-text { font-size: 1em; text-align: left; margin-bottom: 15px; }
 
 /* --- FORMULAIRES ET BOUTONS --- */
 input[type="text"] {
@@ -77,10 +71,14 @@ button {
     font-weight: bold;
 }
 
-/* --- MEDIA QUERIES --- */
+/* --- CORRECTION POUR LES PAGES LONGUES --- */
+/* Sur les pages d'énigmes, le texte va naturellement agrandir le container 
+   et la marge de 20vh permettra de scroller vers le bas */
+
 @media (min-width: 600px) {
     .container {
-        padding: 35px;
+        padding: 40px;
+        margin-top: 30vh; /* Un peu plus bas sur ordinateur */
         margin-bottom: 100px;
     }
 }
