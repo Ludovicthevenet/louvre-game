@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     margin: 0;
-    padding: 10px;
+    padding: 20px 10px; /* Espace en haut et en bas pour le scroll */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('background.jpg'); 
     background-size: cover;
     background-position: center;
@@ -13,37 +13,24 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* CHANGEMENT ICI : On pousse le contenu vers le bas */
-    justify-content: flex-end; 
+    /* On change le centrage : le contenu commence en haut et on gère l'espace */
+    justify-content: flex-start; 
     align-items: center;
     text-align: center;
+    overflow-y: auto; /* RÉACTIVE LE SCROLL */
 }
 
-/* --- LE CONTENEUR (FORÇAGE EN BAS) --- */
-/* --- LE CONTENEUR (FORÇAGE ABSOLU) --- */
+/* --- LE CONTENEUR (S'adapte à la hauteur du texte) --- */
 .container {
-    background-color: rgba(255, 255, 255, 0.92) !important;
-    padding: 20px !important;
-    border-radius: 15px !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
-    width: 90% !important; /* Légèrement réduit pour être sûr que ça passe sur tous les mobiles */
-    max-width: 600px !important;
-    box-sizing: border-box !important;
-
-    /* --- FORÇAGE DE POSITION --- */
-    position: fixed !important; /* 'fixed' est encore plus fort qu'absolute pour rester en bas */
-    bottom: 40px !important;    /* Distance précise du bas */
-    left: 50% !important;
-    top: auto !important;       /* Annule tout centrage vertical précédent */
-    transform: translateX(-50%) !important;
-    z-index: 9999 !important;   /* S'assure qu'il passe devant tout le reste */
-}
-
-    /* --- NOUVELLE MÉTHODE DE FORÇAGE --- */
-    position: absolute; /* On sort du flux normal */
-    bottom: 50px;       /* On le fixe à 50 pixels du bas de l'écran */
-    left: 50%;          /* On le place au milieu horizontalement */
-    transform: translateX(-50%); /* On le centre parfaitement par rapport à sa propre largeur */
+    background-color: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 95%;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin-top: auto;    /* POUSSE LE BLOC VERS LE BAS SI VIDE AU-DESSUS */
+    margin-bottom: 40px; /* Évite qu'il soit collé au bord du bas */
 }
 
 /* --- ADAPTATION DES TEXTES --- */
@@ -53,15 +40,11 @@ h1 {
     margin-bottom: 15px;
 }
 
-h2 { 
-    color: #4A74F3; 
-    font-size: 1.4em;
-}
-
 .enigme-text {
     font-size: 1.05em;
     text-align: left;
     margin-bottom: 20px;
+    word-wrap: break-word; /* Évite que le texte dépasse */
 }
 
 /* --- FORMULAIRES ET BOUTONS --- */
@@ -88,31 +71,15 @@ button {
     font-weight: bold;
 }
 
-button:disabled { background-color: #ccc; }
+/* --- AJUSTEMENT SPÉCIFIQUE POUR L'ACCUEIL --- */
+/* Si vous avez un titre très court sur l'accueil, le 'margin-top: auto' 
+   le poussera naturellement vers le bas sans bloquer le scroll ailleurs. */
 
-#feedback { margin: 15px 0; font-weight: bold; font-size: 0.9em; }
-
-/* --- RECAPITULATIF FINAL --- */
-.recap-item {
-    background-color: #f0f2f9;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    text-align: left;
-    font-size: 0.9em;
-    border-left: 5px solid #2649B2;
-}
-
-/* --- AJUSTEMENTS POUR GRANDS ÉCRANS (Tablettes/Ordi) --- */
 @media (min-width: 600px) {
     .container {
         padding: 40px;
         width: 80%;
-        /* Ajustement de la marge basse pour les grands écrans */
-        margin-bottom: 80px; 
+        margin-top: auto; 
+        margin-bottom: 80px;
     }
-    h1 { font-size: 2.5em; }
-    button { width: auto; min-width: 200px; }
 }
-
-
